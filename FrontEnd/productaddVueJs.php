@@ -1,6 +1,6 @@
 <?php
 
-include ('../BackEnd/BakendFunctions/processForm.php');
+include ('processForm.php');
 
 
 ?>
@@ -36,11 +36,17 @@ include ('../BackEnd/BakendFunctions/processForm.php');
      <hr>
 		<form id="product_form" method="post">
 			<!-- SKU -->
-			<div class="mb-3">
+			<div  class="mb-3">
 			<div class="d-inline-flex align-items-center">
 				<label for="sku" class="form-label" style="min-width: 100px !important">SKU:</label>
-				<input type="text" class="form-control" name="sku" value="<?php echo isset($_POST['sku']) ? $_POST['sku'] : ''; ?>" id ="sku"style="width: 60%" required>
+				<input type="text" class="form-control" v-model="sku" name="sku" value="<?php echo isset($_POST['sku']) ? $_POST['sku'] : ''; ?>" id ="sku"style="width: 60%" required>
 			</div>
+			<?php if ($error): ?>
+            <span class="text-danger"><?php echo $sku_validate_message; ?></span>
+            <?php endif; ?>
+			<?php if ($error): ?>
+            <span class="text-danger"><?php echo $sku_unique_message; ?></span>
+            <?php endif; ?>
 		    </div>
 			<!-- Name -->
 			<div class="mb-3">
@@ -61,21 +67,21 @@ include ('../BackEnd/BakendFunctions/processForm.php');
             <div id="app">
 			<div class="mb-3">
 			<div class="d-inline-flex align-items-center">
-				<label for="type_switcher" class="form-label" style="min-width: 100px !important">Type Switcher</label>
-				<select  v-model="type_switcher" class="form-select" id="type_switcher" name="type_switcher"style="width: 165px; margin-left: 20px;">
+				<label for="productType" class="form-label" style="min-width: 100px !important">Type Switcher</label>
+				<select  v-model="productType" class="form-select" id="productType" name="productType"style="width: 165px; margin-left: 20px;">
                 <option value="" selected hidden>&nbsp;</option>
 					<option value="" selected disabled>Type Switcher</option>
 					
-					<option value="DVD" value="<?php echo isset($_POST['type_switcher']) ? $_POST['type_switcher'] : ''; ?>">DVD</option>
-					<option value="Book" value="<?php echo isset($_POST['type_switcher']) ? $_POST['type_switcher'] : ''; ?>">Book</option>
-					<option value="Furniture" value="<?php echo isset($_POST['type_switcher']) ? $_POST['type_switcher'] : ''; ?>">Furniture</option>
+					<option value="DVD" value="<?php echo isset($_POST['productType']) ? $_POST['productType'] : ''; ?>">DVD</option>
+					<option value="Book" value="<?php echo isset($_POST['productType']) ? $_POST['productType'] : ''; ?>">Book</option>
+					<option value="Furniture" value="<?php echo isset($_POST['productType']) ? $_POST['productType'] : ''; ?>">Furniture</option>
 				</select>
 				
 			</div>
 		    </div>
 			
 			<!-- size Group -->			          
-			 <div v-if="type_switcher === 'DVD'" class="mb-3"  id="sizeGroup">
+			 <div v-if="productType === 'DVD'" class="mb-3"  id="sizeGroup">
 				<div class="d-inline-flex align-items-center">
 					<label for="size" style="min-width: 100px !important">Size (MB):</label>
 					<input type="number" class="form-control" id="size" name="size" style="width: 155px; margin-left: 30px;">
@@ -88,7 +94,7 @@ include ('../BackEnd/BakendFunctions/processForm.php');
 			</div>
 			
 			<!-- WeightGroup -->			         
-			 <div class="mb-3"  v-if="type_switcher === 'Book'" id="weightGroup">
+			 <div class="mb-3"  v-if="productType === 'Book'" id="weightGroup">
 				
 				<div class="d-inline-flex align-items-center">
 					<label for="weight" style="min-width: 100px !important">Weight (Kg):</label>
@@ -102,20 +108,20 @@ include ('../BackEnd/BakendFunctions/processForm.php');
 			</div>
 			<!-- dimensionsGroup -->
 					         
-			<div class="mb-3" v-if="type_switcher === 'Furniture'" id="dimensionsGroup">
-			<div v-model="height" class="mb-3">
+			<div class="mb-3" v-if="productType === 'Furniture'" id="dimensionsGroup">
+			<div class="mb-3">
 				<div class="d-inline-flex align-items-center">
 					<label for="height" style="min-width: 100px !important">Height (cm):</label>
 					<input type="number" class="form-control" id="height" name="height" value="<?php echo isset($_POST['height']) ? $_POST['height'] : ''; ?>" style="width: 155px; margin-left: 30px;">
                 </div>
 			</div>
-		    <div  v-model="width" class="mb-3">	
+		    <div  class="mb-3">	
 				<div class="d-inline-flex align-items-center">
 					<label for="width" style="min-width: 100px !important">Width (cm):</label>
 					<input type="number" class="form-control" id="width" name="width" value="<?php echo isset($_POST['width']) ? $_POST['width'] : ''; ?>" style="width: 155px; margin-left: 30px;">
                 </div>
 			</div>
-			<div v-model="length" class="mb-3">
+			<div  class="mb-3">
 				<div class="d-inline-flex align-items-center">
 					<label for="length" style="min-width: 100px !important">Length (cm):</label>
 					<input type="number" class="form-control" id="length" name="length" value="<?php echo isset($_POST['length']) ? $_POST['length'] : ''; ?>" style="width: 155px; margin-left: 30px;">
