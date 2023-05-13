@@ -6,6 +6,11 @@ include '../BackEnd/BakendFunctions/Products/Book.php';
 include '../BackEnd/BakendFunctions/Products/DVD.php';
 include '../BackEnd/BakendFunctions/Products/Furniture.php';
 
+
+$error = false;
+$sku_unique_message = "";
+$sku_validate_message = "";
+
 if (isset($_POST['submit']))
 {
 
@@ -52,14 +57,14 @@ $attr = $product->getAttributes();
 
 if (!$product->validateSKU($sku))
 {
-    echo 'Invalid sku input ';
+    $sku_validate_message = "Invalid Sku input";
+    $error = true;
 }
 elseif (!$product->isUniqueSKU($sku)) 
 {
-    echo 'SKU has been used before';
-    $error_message = "SKU has been used before";
-    "<script>document.getElementById('sku-field').querySelector('#sku-error').innerHTML = '$error_message';</script>";
-   
+    $sku_unique_message = "SKU has been used before";
+    $error = true;
+
    
 }
 elseif (!$product->validateName($name))
