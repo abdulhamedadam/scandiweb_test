@@ -112,7 +112,7 @@ include 'databaseRelations.php';
 
     public function Massdelete($checkedIds)
     {
-        return $this->delete('id', $checkedIds);
+        return $this->delete('sku', $checkedIds);
     }
 
 
