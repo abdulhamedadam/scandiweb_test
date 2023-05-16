@@ -48,8 +48,7 @@ $user = $row->getID($id);
 
         
        </div>  
-       
-     
+  
     </div>
     <hr>
 
@@ -71,26 +70,12 @@ $user = $row->getID($id);
     </div>
   </card>
 </div>
-
-
       </form>
- 
-    
-
- 
-
-   
-
-
-
 </div>
 
    
 </div>
-    
-    
-    <div class=" px-24 py-10">
-        
+  <div class=" px-24 py-10"> 
         <footer> 
             <hr>
             <p class="text-center mt-8">Scandiweb Test assignment</p>
