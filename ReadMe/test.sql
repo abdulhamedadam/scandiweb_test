@@ -5,7 +5,7 @@
 -- PHP Version: 8.2.0
 
 
-CREATE TABLE `products` (
+CREATE TABLE `productstest` (
   `id` Int (11) NOT NULL PRIMARY KEY,
   `sku` varchar(255)  NOT NULL,UNIQUE(sku),
   `name` varchar(255) NOT NULL,

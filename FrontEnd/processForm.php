@@ -1,79 +1,85 @@
 <?php
-ob_start();
+namespace processform;
 
-include '../BackEnd/BakendFunctions/Product.php';
-include '../BackEnd/BakendFunctions/Products/Book.php';
-include '../BackEnd/BakendFunctions/Products/DVD.php';
-include '../BackEnd/BakendFunctions/Products/Furniture.php';
+require './autoLoad/autoloadProducts.php';
+
+ use BackEnd\BakendFunctions\FileLogger;
+ use BackEnd\BakendFunctions\Products\WeightProduct;
+ use BackEnd\BakendFunctions\Products\SizeProduct;
+ use BackEnd\BakendFunctions\Products\DimensionProduct;
+
+$error = false;
+$sku_unique_message = "";
+$sku_validate_message = "";
+$logger = new FileLogger();
 
 if (isset($_POST['submit']))
 {
 
-    
-//$user = new Product();
-
 // Retrieve the form data
-
-    
-
 
 $sku=($_POST['sku']);
 $name=($_POST['name']) ;
 $price=($_POST['price']);
 $type=($_POST['productType']);
 
-if ($type == 'DVD') {
-    $product = new SizeProduct();
-    $product->setSku($sku);
-    $product->setName($name);
-    $product->setPrice($price);
-    $product->setType($type);
-    $product->setSize($_POST['size']);
-} elseif ($type == 'Book') {
-    $product = new WeightProduct();
-    $product->setSku($sku);
-    $product->setName($name);
-    $product->setPrice($price);
-    $product->setType($type);
-    $product->setWeight($_POST['weight']);
-} else {
-    $product = new DimensionProduct();
-    $product->setSku($sku);
-    $product->setName($name);
-    $product->setPrice($price);
-    $product->setType($type);
-    $product->setHeight($_POST['height']);
-    $product->setWidth($_POST['width']);
-    $product->setLength($_POST['length']);
-}
+$productClasses = [
+    'DVD' => SizeProduct::class,
+    'Book' => WeightProduct::class,
+    'Furniture' => DimensionProduct::class,
+    // Add more mappings for other product types
+];
 
+
+if (array_key_exists($type, $productClasses)) {
+    $productClass = $productClasses[$type];
+    $product = new $productClass();
+
+    if ($product instanceof SizeProduct) {
+        $size=$product->setSize( $_POST['size']);
+        $product->createSizeProduct($sku, $name, $price, $type, $size);
+
+    } elseif ($product instanceof WeightProduct) {
+        $product = new WeightProduct();
+        $weight=$product->setWeight( $_POST['weight']);
+        $product->createWeightProduct($sku, $name, $price, $type, $weight);
+    } else {
+        $product = new DimensionProduct();
+        $height=$product->setHeight( $_POST['height']);
+        $width=$product->setWidth( $_POST['width']);
+        $length=$product->setLength( $_POST['length']);
+        $product->createDimensionProduct($sku, $name, $price, $type, $height,$width,$length);
+    }
+} 
 
 $attr = $product->getAttributes();
 
 if (!$product->validateSKU($sku))
 {
-    echo 'Invalid sku input ';
+    $sku_validate_message = "Invalid Sku input";
+    $error = true;
+    $logger->error($sku_validate_message);
 }
 elseif (!$product->isUniqueSKU($sku)) 
 {
-    echo 'SKU has been used before';
-    $error_message = "SKU has been used before";
-    "<script>document.getElementById('sku-field').querySelector('#sku-error').innerHTML = '$error_message';</script>";
-   
+    $sku_unique_message = "SKU has been used before";
+    $error = true;
+    $logger->error($sku_unique_message);
+
    
 }
 elseif (!$product->validateName($name))
 {
-    echo "Invalid name input";
+    $logger->error("Invalid name input");
 } 
 
 elseif (!$product->validatePrice($price)) 
 {
-    echo "Invalid price input";
+    $logger->error("Invalid price input");
 }
  elseif (!$product->validateType($type)) 
 {
-    echo "Invalid type input";
+    $logger->error("Invalid type input");
 }
 else{
 
@@ -84,10 +90,11 @@ $result = $product->save($sku, $name, $price,$type,$attr);
  if($result)   
     {
         header('location:productlist.php');
+        exit();
     }
 	else
 	{
-        die(mysqli_error($con));
+        $logger->error(mysqli_error($con));
     }
 }
     
@@ -95,5 +102,5 @@ $result = $product->save($sku, $name, $price,$type,$attr);
 
 
 
-ob_end_flush();
+
 ?>

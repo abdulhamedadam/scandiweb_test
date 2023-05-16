@@ -1,5 +1,7 @@
 <?php
-include ('../BackEnd/BakendFunctions/Product.php');
+
+require './autoLoad/autoloadProducts.php';
+use BackEnd\BakendFunctions\Product;
 
 
 $row = new Product();

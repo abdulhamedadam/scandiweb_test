@@ -1,6 +1,7 @@
 <?php
-
+namespace BackEnd\BakendFunctions;
 include 'database.php';
+use BackEnd\BakendFunctions\Database;
 
 abstract class QueryBuilder
 {

@@ -1,7 +1,7 @@
 <?php
-ob_start();
-include ('../BackEnd/BakendFunctions/Product.php');
-
+namespace delete;
+require './autoLoad/autoloadProducts.php';
+use BackEnd\BakendFunctions\Product;
 
 $row = new Product();
 $users = $row->getAll();
@@ -15,8 +15,9 @@ if (isset($_POST['checkedIds']) && isset($_POST['deleteAll'])) {
   if($deleteMsg)
   {
     header('location:productlist.php');
+    exit();
   }
 }
 
-ob_end_flush();
+
 ?>

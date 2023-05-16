@@ -1,5 +1,8 @@
 <?php
+namespace BackEnd\BakendFunctions;
 include 'databaseRelations.php';
+use BackEnd\BakendFunctions\QueryBuilder;
+
  class Product extends QueryBuilder
 {
     private $table_name = 'productstest';
@@ -112,7 +115,7 @@ include 'databaseRelations.php';
 
     public function Massdelete($checkedIds)
     {
-        return $this->delete('id', $checkedIds);
+        return $this->delete('sku', $checkedIds);
     }
 
 
