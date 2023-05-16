@@ -13,6 +13,11 @@ $sku_unique_message = "";
 $sku_validate_message = "";
 $logger = new FileLogger();
 
+
+$error = false;
+$sku_unique_message = "";
+$sku_validate_message = "";
+
 if (isset($_POST['submit']))
 {
 
@@ -56,16 +61,14 @@ $attr = $product->getAttributes();
 
 if (!$product->validateSKU($sku))
 {
-    $sku_validate_message = "Invalid Sku input";
-    $error = true;
-    $logger->error($sku_validate_message);
+    echo 'Invalid sku input ';
 }
 elseif (!$product->isUniqueSKU($sku)) 
 {
-    $sku_unique_message = "SKU has been used before";
-    $error = true;
-    $logger->error($sku_unique_message);
-
+    echo 'SKU has been used before';
+    $error_message = "SKU has been used before";
+    "<script>document.getElementById('sku-field').querySelector('#sku-error').innerHTML = '$error_message';</script>";
+   
    
 }
 elseif (!$product->validateName($name))

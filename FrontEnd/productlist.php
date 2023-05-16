@@ -29,32 +29,23 @@ include ('process-delete.php');
 <div class="min-h-screen flex flex-col justify-between"> 
   <div class="container mx-auto py-6 px-24 overflow-y-auto "> 
   
-    <div id="app">
-      <form  id="deleteForm" action="process-delete.php" method="post">
-        <div class="flex justify-between mb-8">
+  <div id="app">
+  <form id="deleteForm" action="process-delete.php" method="post">
+    <div class="flex justify-between mb-8">
+        <div><h1 class="text-4xl font-semibold">Product List</h1></div>
+       <div class="">  
+        <button id='add' class="add rounded-lg bg-blue-500 p-2 text-white mx-2"><a href="productadd.php">ADD</a></button>
 
-            <div><h1 class="text-4xl font-semibold">Product List</h1></div>
-            <div class="">  
-             <button id='add' class="add rounded-lg bg-blue-500 p-2 text-white mx-2"><a href="productaddVueJs.php">ADD</a></button>
-
-             <button type="submit" name="deleteAll" id="massdelete"
-                 class="massdelete rounded-lg p-2 text-white"
-                :class="{
-                   'bg-red-700': isAnyCheckboxChecked,
-                   'bg-gray-500 cursor-not-allowed': !isAnyCheckboxChecked
-                }"
-                :disabled="!isAnyCheckboxChecked">MASS DELETE</button>
-
-            </div>  
-
-        </div>
-    
-   
-        <hr>
-        <p class="font-bold text-red-500">Products selected for deletion: <span class=" text-black"> {{ checkedIds }} </span></p>
-        <div class="checkbox-group grid grid-cols-4 gap-x-10 gap-y-10 mt-6 ">
-   
-   <?php
+        <button type="submit" name="deleteAll" id="massdelete" class="massdelete rounded-lg bg-red-700 p-2 text-white">MASS DELETE</button>
+       </div>  
+       
+     
+    </div>
+    <hr>
+    <!-- <h2>Multi Checkbox</h2>
+    <p>Checked names: <pre>{{ checkedIds }}</pre></p> -->
+    <div class="checkbox-group grid grid-cols-4 gap-x-10 gap-y-10 mt-6 ">
+<?php
  
   
         foreach($users as $user)
@@ -100,6 +91,7 @@ include ('process-delete.php');
       </div>
 
     
-       <script src="JS/add-vue.js"></script>
-</body>
-</html>
+    <script src="JS/add-Vue.js"></script>
+    </body>
+
+    </html>
