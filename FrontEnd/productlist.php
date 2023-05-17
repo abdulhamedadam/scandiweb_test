@@ -32,6 +32,7 @@ include ('process-delete.php');
   <div id="app">
   <form id="deleteForm" action="process-delete.php" method="post">
     <div class="flex justify-between mb-8">
+      
         <div><h1 class="text-4xl font-semibold">Product List</h1></div>
        <div class="">  
         <button id='add' class="add rounded-lg bg-blue-500 p-2 text-white mx-2"><a href="productadd.php">ADD</a></button>
@@ -68,6 +69,7 @@ include ('process-delete.php');
     </div>
 </div>
 </div>
+<!-- Footer -->
 <div class=" px-24 py-10">
  <footer> 
     <hr>
