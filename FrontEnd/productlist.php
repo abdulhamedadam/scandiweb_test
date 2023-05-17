@@ -37,22 +37,18 @@ include ('process-delete.php');
         <button id='add' class="add rounded-lg bg-blue-500 p-2 text-white mx-2"><a href="productadd.php">ADD</a></button>
 
         <button type="submit" name="deleteAll" id="massdelete" class="massdelete rounded-lg bg-red-700 p-2 text-white">MASS DELETE</button>
-       </div>  
-       
+       </div>   
      
-    </div>
-    <hr>
-    <!-- <h2>Multi Checkbox</h2>
-    <p>Checked names: <pre>{{ checkedIds }}</pre></p> -->
-    <div class="checkbox-group grid grid-cols-4 gap-x-10 gap-y-10 mt-6 ">
-<?php
- 
-  
-        foreach($users as $user)
-        {
+        </div>
+         <hr>
+        <!-- <h2>Multi Checkbox</h2>
+       <p>Checked names: <pre>{{ checkedIds }}</pre></p> -->
+       <div class="checkbox-group grid grid-cols-4 gap-x-10 gap-y-10 mt-6 ">
+            <?php
 
-          ?>
-           
+           foreach($users as $user)
+              {
+             ?>
             <card value="<?php echo $user['sku']??''?>"  class="hover:bg-gray-100 border-2 cursor-pointer border-gray-600 px-2 pt-2 pb-10">
             <input  type="checkbox" name="checkedIds[]" class="delete-checkbox"  value="<?php echo $user['sku']??''?>"   v-model="checkedIds">
             <div class="text-center">
@@ -64,34 +60,20 @@ include ('process-delete.php');
             </a>           
                         
             </div>
-     
-
 
         </card> 
             
-       <?php } ?>  
-
-
-
+         <?php } ?>  
       </form>
     </div>
-
-  </div>
-
-   
 </div>
-    
-    
-       <div class=" px-24 py-10">
-        
-        <footer> 
-            <hr>
-            <p class="text-center mt-8">Scandiweb Test assignment</p>
-        </footer>    
-      </div>
-
-    
-    <script src="JS/add-Vue.js"></script>
-    </body>
-
-    </html>
+</div>
+<div class=" px-24 py-10">
+ <footer> 
+    <hr>
+    <p class="text-center mt-8">Scandiweb Test assignment</p>
+ </footer>    
+</div>
+<script src="JS/add-vue.js"></script>
+</body>
+</html>
