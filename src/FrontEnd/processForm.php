@@ -23,6 +23,7 @@ if (isset($_POST['submit'])) {
     $name = ($_POST['name']);
     $price = ($_POST['price']);
     $type = ($_POST['productType']);
+    
 
     $productClasses = [
         'DVD' => SizeProduct::class,
