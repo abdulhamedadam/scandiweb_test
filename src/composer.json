@@ -1,0 +1,19 @@
+{
+    "name": "dg/scandiweb_test",
+    "autoload": {
+        "psr-4": {
+            "BackEnd\\": "BackEnd/",
+            "BackEnd\\BakendFunctions\\":"/"
+        
+        }
+    },
+    "authors": [
+        {
+            "name": "abdulhamedadam",
+            "email": "abdulhamedzaghloul@gmail.com"
+        }
+    ],
+    "require": {
+        "ramsey/uuid": "^4.7"
+    }
+}

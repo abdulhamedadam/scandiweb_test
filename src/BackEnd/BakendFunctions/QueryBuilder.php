@@ -1,6 +1,6 @@
 <?php
 namespace BackEnd\BakendFunctions;
-include 'database.php';
+require '../vendor/autoload.php';
 use BackEnd\BakendFunctions\Database;
 
 abstract class QueryBuilder

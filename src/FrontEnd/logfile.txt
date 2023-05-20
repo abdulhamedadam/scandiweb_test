@@ -1,0 +1,8 @@
+[ERROR] SKU has been used before
+[ERROR] Invalid Sku input
+[ERROR] Invalid Sku input
+[ERROR] $error_message
+[ERROR] $error_message
+[ERROR] $error_message
+[ERROR] SKU has been used before
+[ERROR] SKU has been used before

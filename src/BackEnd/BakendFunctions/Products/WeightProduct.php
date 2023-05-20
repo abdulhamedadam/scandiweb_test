@@ -15,12 +15,8 @@ class WeightProduct extends Product
         return 'Weight: ' . $this->weight . 'kg';
     }
 
-    function createWeightProduct($sku, $name, $price, $type, $weight) {
+    function createWeightProduct($weight) {
         $product = new WeightProduct();
-        $product->setSku($sku);
-        $product->setName($name);
-        $product->setPrice($price);
-        $product->setType($type);
         $product->setWeight($weight);
         return $product;
     }

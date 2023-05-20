@@ -1,5 +1,5 @@
 <?php
-namespace BackEnd\BakendFunctions\Config;
+namespace BackEnd\BakendFunctions;
 
 define('DB_USER', 'root');
 define('DB_PASSWORD', '');

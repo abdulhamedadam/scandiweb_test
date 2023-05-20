@@ -3,7 +3,7 @@
 namespace BackEnd\BakendFunctions;
 
 require_once 'config.php';
-
+use BackEnd\BakendFunctions\config;
 
 class Database
 {

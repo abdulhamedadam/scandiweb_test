@@ -14,12 +14,8 @@ class SizeProduct extends Product
         return 'Size: ' . $this->size . 'MB';
     }
 
-    function createSizeProduct($sku, $name, $price, $type, $size) {
+    function createSizeProduct($size) {
         $product = new SizeProduct();
-        $product->setSku($sku);
-        $product->setName($name);
-        $product->setPrice($price);
-        $product->setType($type);
         $product->setSize($size);
         return $product;
     }   

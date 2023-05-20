@@ -1,7 +1,7 @@
 <?php
 namespace BackEnd\BakendFunctions;
-include 'databaseRelations.php';
-use BackEnd\BakendFunctions\QueryBuilder;
+require '../vendor/autoload.php';
+use  BackEnd\BakendFunctions\QueryBuilder;
 
  class Product extends QueryBuilder
 {

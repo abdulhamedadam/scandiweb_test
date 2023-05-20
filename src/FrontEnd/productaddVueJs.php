@@ -84,7 +84,7 @@ include ('processForm.php');
 			 <div v-if="productType === 'DVD'" class="mb-3"  id="sizeGroup">
 				<div class="d-inline-flex align-items-center">
 					<label for="size" style="min-width: 100px !important">Size (MB):</label>
-					<input type="number" class="form-control" id="size" name="size" style="width: 155px; margin-left: 30px;">
+					<input type="number" class="form-control" id="size" name="size" style="width: 155px; margin-left: 30px;"  required>
                 </div>
 
                 <div class="m-3">
@@ -98,7 +98,7 @@ include ('processForm.php');
 				
 				<div class="d-inline-flex align-items-center">
 					<label for="weight" style="min-width: 100px !important">Weight (Kg):</label>
-					<input type="number" class="form-control" id="weight" name="weight" value="<?php echo isset($_POST['weight']) ? $_POST['weight'] : ''; ?>" style="width: 155px; margin-left: 30px;">
+					<input type="number" class="form-control" id="weight" name="weight" value="<?php echo isset($_POST['weight']) ? $_POST['weight'] : ''; ?>" style="width: 155px; margin-left: 30px;" required>
                 </div>
 
                 <div class="m-3">
@@ -112,19 +112,19 @@ include ('processForm.php');
 			<div class="mb-3">
 				<div class="d-inline-flex align-items-center">
 					<label for="height" style="min-width: 100px !important">Height (cm):</label>
-					<input type="number" class="form-control" id="height" name="height" value="<?php echo isset($_POST['height']) ? $_POST['height'] : ''; ?>" style="width: 155px; margin-left: 30px;">
+					<input type="number" class="form-control" id="height" name="height" value="<?php echo isset($_POST['height']) ? $_POST['height'] : ''; ?>" style="width: 155px; margin-left: 30px;" required>
                 </div>
 			</div>
 		    <div  class="mb-3">	
 				<div class="d-inline-flex align-items-center">
 					<label for="width" style="min-width: 100px !important">Width (cm):</label>
-					<input type="number" class="form-control" id="width" name="width" value="<?php echo isset($_POST['width']) ? $_POST['width'] : ''; ?>" style="width: 155px; margin-left: 30px;">
+					<input type="number" class="form-control" id="width" name="width" value="<?php echo isset($_POST['width']) ? $_POST['width'] : ''; ?>" style="width: 155px; margin-left: 30px;" required>
                 </div>
 			</div>
 			<div  class="mb-3">
 				<div class="d-inline-flex align-items-center">
 					<label for="length" style="min-width: 100px !important">Length (cm):</label>
-					<input type="number" class="form-control" id="length" name="length" value="<?php echo isset($_POST['length']) ? $_POST['length'] : ''; ?>" style="width: 155px; margin-left: 30px;">
+					<input type="number" class="form-control" id="length" name="length" value="<?php echo isset($_POST['length']) ? $_POST['length'] : ''; ?>" style="width: 155px; margin-left: 30px;" required>
                 </div>
             </div> 
                 <div  class="m-3">
@@ -141,11 +141,8 @@ include ('processForm.php');
 
 
 <div id="footer" class="text-center mt-30">    
-	
-		<hr>
-
-		<p class="text-center mt-30">Scandiweb Test assignment</p>
-	 
+	<hr>
+	<p class="text-center mt-30">Scandiweb Test assignment</p>
 </div>
 
 
@@ -154,3 +151,4 @@ include ('processForm.php');
 
 </body>
 </html>
+

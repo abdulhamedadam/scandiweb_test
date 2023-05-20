@@ -1,3 +1,0 @@
-[ERROR] SKU has been used before
-[ERROR] Invalid Sku input
-[ERROR] Invalid Sku input
