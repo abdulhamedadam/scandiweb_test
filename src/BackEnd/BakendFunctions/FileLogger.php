@@ -3,8 +3,6 @@
 namespace BackEnd\BakendFunctions;
 use BackEnd\BakendFunctions\LoggerInterface;
 
-
-
 class FileLogger implements LoggerInterface {
     public function log($message, $level) {
         // Log the message to a file
