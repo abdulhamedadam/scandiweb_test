@@ -19,27 +19,16 @@ abstract class QueryBuilder
         $this->table_name = $table_name;
         $this->column = $column;
     }
-
-
     //select Array function
     public function select(array $columns)
     {
         $this->query = 'SELECT '.implode(',', $columns).' FROM '.$this->table_name;
         return $this;
-    }
-
-
-
-
- 
-
- 
+    } 
     //insert function
     public function insert(array $data,array $columns)
     
     {
-    
-
         $this->data = array(); // Reset the data array
         $this->data = array_merge($this->data, $data);
     
@@ -50,8 +39,6 @@ abstract class QueryBuilder
     
         return $this->bind($data);
     }
-
-
     //delete function
     public function delete(string $column, array $data)
     {
@@ -62,8 +49,6 @@ abstract class QueryBuilder
         $this->where($column,' IN ',$data);
         return $this->bind();
     }
-    
-
     //where function for multi select
     public function where(string $column, string $operator, array $value)
     {
@@ -74,8 +59,6 @@ abstract class QueryBuilder
 
     return $this;
     }
-
-
     //bind function
     private function bind()
     {
@@ -113,9 +96,7 @@ abstract class QueryBuilder
     return $this;
 
     }
-
-
-    
+ 
     private function getTypes(): string
     {
         $types = '';
