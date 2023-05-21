@@ -1,20 +1,13 @@
 <?php
 
 require './autoLoad/autoloadProducts.php';
-
 use BackEnd\BakendFunctions\Product;
 
 
 $row = new Product();
 $id = $_GET['showid'];
 $user = $row->getID($id);
-
-
-
-
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,14 +28,10 @@ $user = $row->getID($id);
       }
     }
   </script>
-
 </head>
-
 <body class="">
   <div class="min-h-screen flex flex-col justify-between">
     <div class="container mx-auto py-6 px-24 overflow-y-auto ">
-
-
       <form id="deleteForm" method="post">
         <div class="flex justify-between mb-8">
           <div>
@@ -50,14 +39,9 @@ $user = $row->getID($id);
           </div>
           <div class="">
             <button class="rounded-lg bg-gray-500 p-2 text-white mx-2"><a href="productlist.php">cancel</a></button>
-
-
           </div>
-
-
         </div>
         <hr>
-
         <div class="my-5 hover:bg-gray-100 border-2 border-gray-600 px-2 pt-2 pb-6">
           <card class="bg-white rounded-lg overflow-hidden ">
             <div class="p-6">
@@ -70,18 +54,15 @@ $user = $row->getID($id);
                 <p class="mb-2 text-2xl font-semibold text-gray-800">Type: <?php echo $user[0]['type']; ?></p>
                 <p class="mb-2 text-2xl font-semibold text-gray-800"><?php echo $user[0]['attribute']; ?></p>
                 <div class="mt-4">
-
                 </div>
               </div>
             </div>
           </card>
         </div>
       </form>
-
     </div>
   </div>
   <div class=" px-24 py-10">
-
     <footer>
       <hr>
       <p class="text-center mt-8">Scandiweb Test assignment</p>
@@ -89,5 +70,4 @@ $user = $row->getID($id);
   </div>
   <script src="addproduct-Vue.js"></script>
 </body>
-
 </html>
