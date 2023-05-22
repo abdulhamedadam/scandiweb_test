@@ -1,13 +1,8 @@
 <?php
-
 include('process-delete.php');
-
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>Product List</title>
@@ -45,13 +40,9 @@ include('process-delete.php');
               'bg-red-700': isAnyCheckboxChecked,
               'bg-gray-500 cursor-not-allowed': !isAnyCheckboxChecked
             }" :disabled="!isAnyCheckboxChecked">MASS DELETE</button>
-
-
             </div>
 
           </div>
-
-
           <hr>
           <p class="font-bold text-red-500">Products selected for deletion: <span class=" text-black"> {{ checkedIds }} </span></p>
           <div class="checkbox-group grid grid-cols-4 gap-x-10 gap-y-10 mt-6 ">
@@ -82,7 +73,6 @@ include('process-delete.php');
 
                 </div>
               </card>
-
             <?php } ?>
         </form>
       </div>
