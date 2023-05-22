@@ -6,7 +6,6 @@ include('process-delete.php');
 <head>
   <meta charset="UTF-8">
   <title>Product List</title>
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script>
