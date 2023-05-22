@@ -23,9 +23,7 @@ if (isset($_POST['submit'])) {
     $name = ($_POST['name']);
     $price = ($_POST['price']);
     $type = ($_POST['productType']);
-
-    //using mapping 
-
+    
     $productClasses = [
         'DVD' => SizeProduct::class,
         'Book' => WeightProduct::class,
@@ -65,9 +63,6 @@ if (isset($_POST['submit'])) {
     }
     $parametersString = implode(', ', $parameters);
     $product = $createdProduct->$productMethod(...$parameters);
-
-
-
     $attr = $product->getAttributes();
 
     if (!$product->validateSKU($sku)) {
@@ -86,10 +81,7 @@ if (isset($_POST['submit'])) {
         $logger->error("Invalid type input");
     } else {
 
-
         $result = $product->save($sku, $name, $price, $type, $attr);
-
-
         if ($result) {
             header('location:productlist.php');
             exit();
