@@ -1,8 +1,6 @@
 <?php
-
-require './autoLoad/autoloadProducts.php';
+require __DIR__ . '/../vendor/autoload.php';
 use BackEnd\BakendFunctions\Product;
-
 
 $row = new Product();
 $id = $_GET['showid'];
